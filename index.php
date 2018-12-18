@@ -71,7 +71,7 @@ if(isset($_POST['submit'])){
 				':username' => $username,
 				':password' => $hashedpassword,
 				':email' => $email,
-				':active' => $activasion
+				':active' => "Yes"
 			));
 			$id = $db->lastInsertId('memberID');
 
@@ -81,6 +81,7 @@ if(isset($_POST['submit'])){
 			$body = "<p>Thank you for registering at demo site.</p>
 			<p>To activate your account, please click on this link: <a href='".DIR."activate.php?x=$id&y=$activasion'>".DIR."activate.php?x=$id&y=$activasion</a></p>
 			<p>Regards Site Admin</p>";
+
 
 			$mail = new Mail();
 			$mail->setFrom(SITEEMAIL);
@@ -130,7 +131,7 @@ require('layout/header.php');
 
 				//if action is joined show sucess
 				if(isset($_GET['action']) && $_GET['action'] == 'joined'){
-					echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
+					echo "<h2 class='bg-success'>Registration successful, please login.</h2>";
 				}
 				?>
 
